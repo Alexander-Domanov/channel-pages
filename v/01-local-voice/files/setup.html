@@ -13,50 +13,45 @@
 </header>
 
 <h1>Setting it up</h1>
-<p class="lead">Four things to get right. Get these and the rest is waiting for a download.</p>
+<p class="lead">Four things to get right. Then you wait for a download.</p>
 
 <h2>The four things</h2>
 <ol>
   <li><strong>Python 3.12 or newer.</strong> From <a href="https://www.python.org/downloads/">python.org</a>.
-      Take the installer's default options.</li>
-  <li><strong>One folder for OmniVoice, another for Qwen3-TTS.</strong> Not the same folder. They need
-      different versions of the same shared piece, and together they break each other. The two folders
-      can sit side by side anywhere you like.</li>
-  <li><strong>The maths part first, then the program.</strong> OmniVoice needs its maths part
-      installed before the program itself:
+      Take the default options.</li>
+  <li><strong>One folder per program.</strong> Not the same folder. They need different versions of the
+      same shared piece, so together they break each other. Anywhere on your disk will do.</li>
+  <li><strong>The maths part first, then the program.</strong> In the OmniVoice folder:
       <pre><code>pip install torch==2.8.0 torchaudio==2.8.0
 pip install omnivoice</code></pre>
-      On Windows or Linux with an NVIDIA card, the first line comes from
-      <a href="https://pytorch.org/get-started/locally/">pytorch.org</a> instead — pick your system
-      there and copy what it gives you. Then the second line.
+      On Windows or Linux with an NVIDIA card, get the first line from
+      <a href="https://pytorch.org/get-started/locally/">pytorch.org</a> instead.
       <br>Qwen3-TTS is one line, in its own folder:
       <pre><code>pip install -U qwen-tts</code></pre></li>
-  <li><strong>Room to download and a steady connection.</strong> A few gigabytes of free space. The
-      model files arrive by themselves the first time you run the program, which is the slowest part
-      of the whole job.</li>
+  <li><strong>Room to download.</strong> A few gigabytes of free space and a steady connection. The
+      model files arrive on their own the first time you run the program, and that's the slow part.</li>
 </ol>
 
 <h2>If it won't start</h2>
 <ul>
-  <li><strong>It says a piece is missing or the wrong version.</strong> You're probably in the other
-      program's folder, or both landed in one folder. Make a clean folder, install again there.</li>
-  <li><strong>It swallows the command and prints pages of text.</strong> Normal. That's the download.
-      Leave it.</li>
-  <li><strong>It finishes but the voice sounds flat or rushed.</strong> Almost always the sample, not
-      the settings. Ten seconds of clean, quiet talking, read at the pace you want —
-      <a href="voice-clone.html">recording your sample</a>.</li>
-  <li><strong>Nothing comes out at all.</strong> Nine times out of ten there's no sample file, or the
-      path to it points somewhere empty. Check that one first.</li>
-  <li><strong>Still stuck?</strong> Both projects keep their instructions on their own page:
+  <li><strong>It says a piece is missing.</strong> You're probably in the other program's folder. Make
+      a clean folder and install again.</li>
+  <li><strong>It prints pages of text and seems stuck.</strong> That's the download. Leave it.</li>
+  <li><strong>The voice sounds flat or rushed.</strong> That's the sample, not the settings. Record
+      ten quiet seconds at the pace you want — <a href="voice-clone.html">recording your sample</a>.</li>
+  <li><strong>Nothing comes out.</strong> Nine times out of ten there's no sample file, or the path to
+      it is empty. Check that first.</li>
+  <li><strong>Still stuck?</strong> Both projects keep their instructions on their own page.
       <a href="https://github.com/k2-fsa/OmniVoice">OmniVoice</a>,
-      <a href="https://github.com/QwenLM/Qwen3-TTS">Qwen3-TTS</a>. Search there for the exact line of
-      red text you got.</li>
+      <a href="https://github.com/QwenLM/Qwen3-TTS">Qwen3-TTS</a>. Search there for the exact red text
+      you got.</li>
 </ul>
 
 <h2>Both are free to sell with</h2>
-<p>OmniVoice and Qwen3-TTS are both open source under the Apache 2.0 licence, which allows commercial
-use. The videos you make with them are yours to upload and monetise. The narrator's voice is a
-different matter: your own voice is yours, anyone else's needs their written permission.</p>
+<p>OmniVoice and Qwen3-TTS are open source under the Apache 2.0 licence. That allows commercial use.
+The videos you make are yours to upload and monetise.</p>
+<p>The narrator's voice is a different matter. Yours is yours. Anyone else's needs written
+permission.</p>
 
 <footer class="site">
   <p><a href="../">Back to video 01</a></p>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>01 — A voice for your videos, free</title>
-<meta name="description" content="Record ten seconds of your voice once, and every video after that narrates itself. No subscription.">
+<meta name="description" content="Record ten seconds of your voice once. Every video after that narrates itself, with no monthly fee.">
 <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
@@ -14,8 +14,8 @@
 </header>
 
 <h1>A voice for your videos, free</h1>
-<p class="lead">Record ten seconds of your voice once. After that every video you make gets narrated
-in your voice, and you stop paying a monthly fee for it.</p>
+<p class="lead">Record ten seconds of your voice once. Every video after that narrates itself in your
+voice, and you stop paying for it.</p>
 
 <nav class="toc">
   <a href="#why">Why bother</a>
@@ -30,90 +30,80 @@ in your voice, and you stop paying a monthly fee for it.</p>
 </nav>
 
 <h2 id="why">Why bother</h2>
-<p>Three videos a week with twenty minutes of talking in each one costs between $264 and $420 a year
-in subscriptions. Your laptop does the same job in about the time it takes you to write the next
-script.</p>
+<p>Three videos a week, twenty minutes of talking in each. In subscriptions that runs $22 to $35 a
+month. Your laptop does the same job while you write the next script.</p>
 
 <h2 id="words">Words you'll meet</h2>
-<p>Five words show up in every guide, and none of them are hard.</p>
+<p>Five words turn up in every guide. None of them are hard.</p>
 <table>
   <tr><th>Word</th><th>What it means here</th></tr>
   <tr><td>Sample</td><td>A short recording of you talking. Ten seconds is enough.</td></tr>
-  <tr><td>Clone</td><td>The program copies how your voice sounds. It doesn't record you again, and it doesn't need more takes.</td></tr>
-  <tr><td>Model</td><td>The part of the program that turns text into speech. You download it once and keep it.</td></tr>
-  <tr><td>Environment</td><td>A folder where one program keeps its own parts. Two programs, two folders, mostly to keep them from breaking each other.</td></tr>
-  <tr><td>Local</td><td>It runs on your own laptop. Nothing is uploaded anywhere and nobody else hears your voice.</td></tr>
+  <tr><td>Clone</td><td>The program copies how you sound. It never records you again.</td></tr>
+  <tr><td>Model</td><td>The part that turns text into speech. You download it once.</td></tr>
+  <tr><td>Environment</td><td>A folder where one program keeps its parts. Two programs, two folders.</td></tr>
+  <tr><td>Local</td><td>It runs on your laptop. Nothing is uploaded.</td></tr>
 </table>
 
 <h2 id="which">Which program</h2>
-<p>Two programs do this job, both free, both open source. Either one gives you the voice; the
-difference is speed and how many languages they know.</p>
+<p>Two programs do this job. Both are free and open source.</p>
 <table>
   <tr><th></th><th>OmniVoice</th><th>Qwen3-TTS</th></tr>
   <tr><td>Who makes it</td><td>k2-fsa, an open research team</td><td>the Qwen team at Alibaba</td></tr>
   <tr><td>Where to get it</td><td><a href="https://github.com/k2-fsa/OmniVoice">github.com/k2-fsa/OmniVoice</a></td><td><a href="https://github.com/QwenLM/Qwen3-TTS">github.com/QwenLM/Qwen3-TTS</a></td></tr>
-  <tr><td>Tested here, 22 seconds of speech</td><td>26 seconds</td><td>73 seconds</td></tr>
+  <tr><td>In testing, 22 seconds of speech</td><td>26 seconds</td><td>73 seconds</td></tr>
   <tr><td>Twenty minutes of narration</td><td>about 23 minutes</td><td>about an hour</td></tr>
   <tr><td>Languages</td><td>more than 600</td><td>10, including Spanish</td></tr>
   <tr><td>First download</td><td>about four minutes of files</td><td>about four gigabytes</td></tr>
   <tr><td>Licence</td><td>Apache 2.0</td><td>Apache 2.0</td></tr>
 </table>
-<p>Both licences let you sell the videos you make with them. Start with OmniVoice — it ran about
-three times faster here. Keep Qwen3-TTS if you want a second voice to compare a line against.</p>
+<p>Start with OmniVoice. It ran about three times faster in testing.</p>
+<p>Keep Qwen3-TTS if you want a second voice to compare a line against. Both licences let you sell
+what you make.</p>
 
 <h2 id="install">How to install</h2>
-<p>You won't be writing code. You copy two commands, press enter, and wait for the download.</p>
+<p>You copy two commands and press enter. That's the whole job.</p>
 <ol>
   <li><strong>Install Python once.</strong> Both programs are written in it. Get it from
       <a href="https://www.python.org/downloads/">python.org</a>, version 3.12 or newer.</li>
-  <li><strong>Make one folder for each program.</strong> This is the step people skip, and it's the
-      one that costs them an evening. OmniVoice wants a newer version of a shared piece than
-      Qwen3-TTS does. In one folder they fight; in two they don't touch.</li>
-  <li><strong>In the OmniVoice folder, run these two lines.</strong> The first one installs the part
-      that does the maths, the second installs the program itself.
+  <li><strong>Make one folder for each program.</strong> This is the step people skip.
+      OmniVoice wants a newer shared piece than Qwen3-TTS does. In one folder they fight. In two,
+      they don't touch.</li>
+  <li><strong>In the OmniVoice folder, run two lines.</strong> The first installs the maths part, the
+      second installs the program.
       <pre><code>pip install torch==2.8.0 torchaudio==2.8.0
 pip install omnivoice</code></pre>
-      On a Windows or Linux machine with an NVIDIA card the first line is different — the exact
-      version is on the <a href="https://github.com/k2-fsa/OmniVoice">OmniVoice page</a>, under
-      Installation.</li>
-  <li><strong>Qwen3-TTS, in its own folder:</strong>
+      On Windows or Linux with an NVIDIA card, the first line is different. The
+      <a href="https://github.com/k2-fsa/OmniVoice">OmniVoice page</a> has it, under Installation.</li>
+  <li><strong>Qwen3-TTS, in its own folder.</strong>
       <pre><code>pip install -U qwen-tts</code></pre>
       Its model files download by themselves the first time you run it.</li>
-  <li><strong>Point the program at your sample and your script, then press start.</strong> Both
-      projects show the exact line on their own page, and both have a window you can open locally
-      instead of typing anything.</li>
+  <li><strong>Point the program at your sample and your script.</strong> Press start. Both projects
+      show the exact line on their own page, and both have a window you can click instead of type.</li>
 </ol>
-<p>The whole setup is two evenings if you go slowly, and one if you don't. The
-<a href="files/setup.html">setup page</a> has the four things that go wrong and what to do about
-them.</p>
+<p>Go slowly and it's two evenings. The <a href="files/setup.html">setup page</a> lists the four
+things that go wrong, and what to do about each.</p>
 
 <h2 id="do">What you do</h2>
 <ol>
-  <li>Find a quiet room and record ten seconds of yourself talking. One take is enough.</li>
+  <li>Record ten seconds of yourself talking, in a quiet room. One take.</li>
   <li>Install the program, in its own folder.</li>
-  <li>Paste your script in, press start, walk away.</li>
-  <li>Come back to a finished audio file and drop it into your video editor.</li>
+  <li>Paste your script in. Press start. Walk away.</li>
+  <li>Come back to a finished audio file and drop it into your editor.</li>
 </ol>
-<p>Do the steps in order, and don't skip the first one. That ten-second recording decides how every
-video after it sounds, and it's the step people rush.</p>
-<p>Twenty minutes of narration takes about twenty minutes to make, and the next script can wait in
-another window while it works. A laptop with eight gigabytes of memory handles this. Nothing here
-needs an expensive computer.</p>
+<p>Do the steps in order. Don't skip the first one.</p>
+<p>That recording decides how every video after it sounds, and it's the step people rush. Twenty
+minutes of narration takes about twenty minutes to make. A laptop with eight gigabytes of memory
+handles it. Nothing here needs an expensive computer.</p>
 
 <h2 id="trip">What trips people up</h2>
 <ul>
-  <li><strong>The two programs fight each other.</strong> OmniVoice needs a newer version of the same
-      shared piece than Qwen3-TTS does. Put them in two separate folders. Keep them together and both
-      stop working, and you'll spend the evening sure you did something wrong. You didn't. Move them
-      apart.</li>
-  <li><strong>The accent comes from your recording, not from the language.</strong> Record in Russian
-      and your Spanish will sound Russian. Want your Spanish to sound Mexican? Record a Spanish
-      sample, eight or nine seconds is plenty.</li>
-  <li><strong>You can't describe a voice in words.</strong> Both programs take a voice from these
-      attributes only: gender, age, pitch, accent, whisper. A recording beats a description, which is
-      why the ten-second sample matters more than any setting.</li>
-  <li><strong>Slow and calm stays slow and calm.</strong> However you read the sample is how every
-      future video will sound. Read it the way you want to be listened to.</li>
+  <li><strong>The two programs fight.</strong> Each needs a different version of the same shared
+      piece. Put them in separate folders. Together, both stop working and you'll blame yourself.</li>
+  <li><strong>The accent comes from your recording.</strong> Read in Russian and your Spanish sounds
+      Russian. Want Mexican Spanish? Record a Spanish sample, eight or nine seconds.</li>
+  <li><strong>You can't describe a voice in words.</strong> The programs take a voice from gender,
+      age, pitch, accent and whisper. Nothing else. That's why the sample beats every setting.</li>
+  <li><strong>Your pace carries over.</strong> Read the sample the way you want to be listened to.</li>
 </ul>
 
 <h2 id="money">What the others charge</h2>
@@ -123,22 +113,19 @@ needs an expensive computer.</p>
   <tr><td>Descript</td><td>$24–35 a month</td></tr>
   <tr><td>Speechify</td><td>$29 a month</td></tr>
   <tr><td>A human narrator, up to five finished minutes</td><td>$350–400</td></tr>
-  <tr><td>OmniVoice or Qwen3-TTS on your own laptop</td><td>$0</td></tr>
+  <tr><td>OmniVoice or Qwen3-TTS on your laptop</td><td>$0</td></tr>
 </table>
-<p><strong>Where these numbers come from.</strong> ElevenLabs Creator and Descript were read off their
-own pricing pages on October 5, 2026 — <a href="https://elevenlabs.io/pricing">elevenlabs.io/pricing</a>
-and <a href="https://www.descript.com/pricing">descript.com/pricing</a>. Speechify the same, at
-<a href="https://speechify.com/pricing">speechify.com/pricing</a>. The narrator rate is a studio price
-list, <a href="https://www.voicecrafters.com/industry-standard-voice-over-rates">voicecrafters.com</a>.
-The yearly figure above is simple multiplication: $22 a month is $264 a year, $35 is $420. Prices move
-and there are first-month discounts — look before you pay anyone.</p>
+<p><strong>Where the numbers come from.</strong> ElevenLabs and Descript come from their own pricing
+pages, read on October 5, 2026. Speechify the same. The narrator rate is a studio price list at
+voicecrafters.com.</p>
+<p>Prices move, and first months are often discounted. Check before you pay anyone.</p>
 
 <h2 id="cant">What it can't do</h2>
 <ul>
-  <li>It sounds good. Not "good for a robot", just good. But it isn't a person, and for a big brand's
+  <li>It sounds good. Not "good for a robot", just good. It still isn't a person. For a big brand's
       ad, hire a person.</li>
-  <li>Your own voice is yours to use. Someone else's needs their permission, and if you use theirs
-      YouTube also makes you flag the video as AI. With your own voice there's nothing to flag.</li>
+  <li>Your own voice is yours. Someone else's needs their permission. On YouTube, a cloned voice that
+      isn't yours also needs the AI label. With your own, there's nothing to flag.</li>
 </ul>
 
 <h2 id="files">Files and numbers</h2>
