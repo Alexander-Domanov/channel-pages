@@ -1,28 +1,31 @@
-# 01 — Voiceover for free instead of $22 a month
+# A voice for your videos, free
 
 **Read it as a page:** https://alexander-domanov.github.io/channel-pages/v/01-local-voice/
 
-Two open models, Apache 2.0, running on a MacBook with an M2 chip and 8 GB of memory. Nothing to
-subscribe to.
+Record ten seconds of your voice once. After that every video you make gets narrated in your voice,
+and you never pay a monthly fee for it.
 
-## The numbers
+## What you do
 
-| Model | Audio produced | Time it took |
-|---|---|---|
-| OmniVoice | 22 s | 26 s |
-| Qwen3-TTS | 23 s | 73 s |
+1. Record ten seconds of yourself in a quiet room.
+2. Install two free programs, each in its own folder.
+3. Paste in your script and press start.
 
-Twenty minutes of narration: about 23 minutes of waiting on OmniVoice, about an hour on Qwen3-TTS.
-Peak memory 1.76 GB out of 8. Cost: zero.
+Twenty minutes of narration takes about twenty minutes to make, on an ordinary laptop.
 
-## What's in this folder
+## What trips people up
 
-- `index.html` — the page itself, the one the link opens.
-- `files/measurements.html` — the table above, plus the quality-setting test.
-- `files/setup.html` — the two-environment rule and the license check.
-- `files/voice-clone.html` — how to record a sample the model won't butcher.
+1. The two programs can't share a folder. Together they stop working.
+2. The accent inside your recording is the accent you get, even in another language.
+3. You can't describe a voice in words. The program copies a recording, it doesn't invent a voice.
 
-## The two things worth remembering
+## What it costs
 
-1. The two models can't share an environment. One wants library 5.3+, the other is pinned to 4.57.
-2. The accent comes from the sample, not from the language you're generating.
+Nothing. The others charge $22 to $35 a month for the same job.
+
+## On this page
+
+- `index.html` — the page itself.
+- `files/measurements.html` — how long the waiting actually takes.
+- `files/setup.html` — the four things to get right, and what to do when it won't start.
+- `files/voice-clone.html` — how to record the sample.
