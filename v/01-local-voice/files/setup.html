@@ -13,8 +13,9 @@
 </header>
 
 <h1>Setting it up</h1>
-<p class="lead">Six steps. After each one there is a line telling you what you should see. If you don't
-see it, stop there — the next step won't work on top of it.</p>
+<p class="lead">Six steps. Each one ends with a line telling you what you should see.</p>
+<p class="note"><strong>Stop at the first step that doesn't show it.</strong> The next step won't work on
+top of a broken one.</p>
 
 <h2>First, what computer do you have?</h2>
 <p>The steps are the same everywhere. Two places differ: how you install Python, and one line in the
@@ -28,10 +29,11 @@ OmniVoice install.</p>
   <li><strong>Linux.</strong> Python is usually there already. Check it before installing another:
       <code>python3 --version</code>. Anything older than 3.12, get a newer one.</li>
 </ul>
-<p class="note"><strong>What is tested, and what isn't.</strong> I ran both programs on a Mac with an
-M2 chip and 8 GB of memory. That path is tested by me. The Windows and Linux lines I took from the two
-projects' own installation pages and from Python's own manual, linked at the bottom — I did not run
-them. If something doesn't match what you see, trust their page over this one.</p>
+<p class="note"><strong>What is tested.</strong> Both programs ran on a Mac with an M2 chip and 8 GB of
+memory. That path is mine.</p>
+<p><strong>What isn't.</strong> The Windows and Linux lines come from the two projects' own
+installation pages and from Python's own manual, linked at the bottom.</p>
+<p>I didn't run those. If something doesn't match what you see, trust their page over this one.</p>
 
 <h2 class="minor" id="words">Words, once</h2>
 <table>
@@ -44,7 +46,7 @@ them. If something doesn't match what you see, trust their page over this one.</
   <tr><td>Local</td><td>It runs on your laptop. Nothing goes to a server.</td></tr>
 </table>
 
-<h2>Step 1 — Python 3.12 or newer</h2>
+<h2>Step 1 — Install Python 3.12 or newer</h2>
 <p>Install it from <a href="https://www.python.org/downloads/">python.org</a> and take the default
 options. Then check what you actually got:</p>
 <pre><code>python3 --version</code></pre>
@@ -65,12 +67,13 @@ out now is fine — 3.12, 3.13, 3.14. Three other answers mean three different t
       installer, open a new terminal window, check again.</li>
 </ul>
 <p class="note">Our own Mac took a different road: its Python 3.12 came from <code>uv</code>, a tool
-that installs Python itself. The paragraph above is the official path, not the one we ran.</p>
+that installs Python itself.</p>
+<p>The paragraph above is the official path, not the one we ran.</p>
 
-<h2>Step 2 — a folder of its own for each program</h2>
-<p>This is the step people skip, and the one that breaks things a week later. Both programs need
-different versions of the same shared piece of maths. Put them in the same place and they break each
-other.</p>
+<h2>Step 2 — Make one folder for each program</h2>
+<p>This is the step people skip, and the one that breaks things a week later.</p>
+<p>Both programs need different versions of the same shared piece of maths. Put them in the same place
+and they break each other.</p>
 <p>A folder that holds one program and its parts is called an environment. One program, one
 environment.</p>
 <p>Now, where these lines go. A terminal is a window where you type commands instead of clicking.
@@ -81,9 +84,10 @@ Open it:</p>
   <li><strong>Windows:</strong> press the Windows key, type <code>PowerShell</code>, press Enter.</li>
   <li><strong>Linux:</strong> <code>Ctrl</code> + <code>Alt</code> + <code>T</code>.</li>
 </ul>
-<p>Everything from here on goes into that window: one line, then Enter, then the next line. Four lines
-make a folder, step into it, and put a copy of Python inside. The folder lands wherever the window
-opened, which on a fresh terminal is your home folder — <code>pwd</code> tells you if you're unsure.</p>
+<p>Everything from here on goes into that window: one line, then Enter, then the next line.</p>
+<p>Four lines make a folder, step into it, and put a copy of Python inside.</p>
+<p>The folder lands wherever the window opened — on a fresh terminal, your home folder.
+<code>pwd</code> tells you if you're unsure.</p>
 <pre><code>mkdir omnivoice
 cd omnivoice
 python3 -m venv .venv
@@ -98,47 +102,51 @@ source .venv/bin/activate</code></pre>
       means it worked.</li>
 </ul>
 <p><strong>You should see</strong> the environment name in brackets at the start of your prompt:
-<code>(.venv)</code>. Everything from here happens in this window. Close it and nothing is lost — open
-a new one, go back into the folder and activate again. Lost your place? <code>pwd</code> prints the
-folder you're standing in.</p>
+<code>(.venv)</code>.</p>
+<p>Everything from here happens in this window. Close it and nothing is lost: open a new one, go back
+into the folder and activate again.</p>
+<p>Lost your place? <code>pwd</code> prints the folder you're standing in.</p>
 <p class="note">The Windows lines come from Python's manual and the projects' own instructions; I
 haven't run them. The Mac lines I ran.</p>
 
-<h2>Step 3 — the maths part, then the program</h2>
+<h2>Step 3 — Install the maths part, then the program</h2>
 <pre><code>pip install torch==2.8.0 torchaudio==2.8.0
 pip install omnivoice</code></pre>
-<p>On Windows or Linux with an NVIDIA card, don't type the first line — take it from
-<a href="https://pytorch.org/get-started/locally/">pytorch.org</a>. The wrong build either fails
-outright or quietly falls back to the slower processor.</p>
+<p>On Windows or Linux with an NVIDIA card, don't type the first line. Take it from
+<a href="https://pytorch.org/get-started/locally/">pytorch.org</a>.</p>
+<p>The wrong build either fails outright or quietly falls back to the slower processor.</p>
 <p><strong>You should see</strong> a run of "Installing collected packages" lines, then
-"Successfully installed". Nothing to read while it works. That's normal, and it can take a few
-minutes.</p>
+"Successfully installed".</p>
+<p>Nothing to read while it works. That's normal, and it can take a few minutes.</p>
 
-<h2>Step 4 — Qwen3-TTS, in its own folder</h2>
+<h2>Step 4 — Install Qwen3-TTS in its own folder</h2>
 <pre><code>cd ..
 mkdir qwen3-tts
 cd qwen3-tts
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -U qwen-tts</code></pre>
-<p><strong>You should see</strong> the same "Successfully installed" line. If the environment name in
-your prompt says <code>omnivoice</code>, you're in the wrong folder — check Step 2.</p>
+<p><strong>You should see</strong> the same "Successfully installed" line.</p>
+<p>If the environment name in your prompt says <code>omnivoice</code>, you're in the wrong folder —
+check Step 2.</p>
 
-<h2>Step 5 — a first run, before your own voice</h2>
-<p>Don't record anything yet. One line and the program speaks in a random voice — nothing of yours is
-involved, so nothing of yours can be the problem.</p>
+<h2>Step 5 — Run it once before your own voice</h2>
+<p>Don't record anything yet. One line and the program speaks in a random voice.</p>
+<p>Nothing of yours is involved, so nothing of yours can be the problem.</p>
 <pre><code>omnivoice-infer --text "This is a test for text to speech." --output hello.wav</code></pre>
 <p>The first run downloads the model — a few gigabytes, and the slow part. Then play
 <code>hello.wav</code>.</p>
 <p><strong>You should see</strong> pages of download lines, then a line saying where the file was
-written. <strong>You should hear</strong> a voice you've never heard, reading that sentence. No file?
-Read the last red line in the terminal.</p>
+written.</p>
+<p><strong>You should hear</strong> a voice you've never heard, reading that sentence.</p>
+<p>No file? Read the last red line in the terminal.</p>
 
-<h2>Step 6 — your sample, then your own words</h2>
-<p>Record ten seconds of yourself — eight rules on <a href="voice-clone.html">recording your
-sample</a> — and save it as <code>my_voice.wav</code> in the folder you're working in. The format
-matters: a phone memo usually lands as <code>.m4a</code>, and the sample page lists three ways to deal
-with that. Then point the program at it — one command does the whole job:</p>
+<h2>Step 6 — Point it at your sample and your text</h2>
+<p>Record ten seconds of yourself and save it as <code>my_voice.wav</code> in the folder you're working
+in. The <a href="voice-clone.html">sample page</a> has the eight rules for that recording.</p>
+<p>The format matters. A phone memo usually lands as <code>.m4a</code>, and the sample page lists three
+ways to deal with that.</p>
+<p>Then point the program at it — one command does the whole job:</p>
 <pre><code>omnivoice-infer --text "This is me talking, not a robot." --ref_audio my_voice.wav --output mine.wav</code></pre>
 <p>Two things you can add:</p>
 <ul>
@@ -148,9 +156,9 @@ with that. Then point the program at it — one command does the whole job:</p>
   <li><strong>File somewhere else?</strong> Give the whole path: <code>--ref_audio
       ~/Desktop/my_voice.wav</code>.</li>
 </ul>
-<p>Rather click than type? <code>omnivoice-demo --port 8001</code> opens the same thing in a browser:
-the <em>Voice Clone</em> tab, your text on top, the file in <em>Reference Audio</em>, then
-Generate.</p>
+<p>Rather click than type? <code>omnivoice-demo --port 8001</code> opens the same thing in a browser.</p>
+<p>It opens on the <em>Voice Clone</em> tab: your text on top, the file in <em>Reference Audio</em>,
+then Generate.</p>
 <p><strong>You should hear</strong> your voice reading the text you typed. That's the whole thing
 working — every video after it is script, paste, wait.</p>
 
