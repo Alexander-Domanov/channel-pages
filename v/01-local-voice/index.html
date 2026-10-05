@@ -19,7 +19,8 @@ voice, and you stop paying for it.</p>
 
 <p class="note"><strong>What you need:</strong></p>
 <ul class="note">
-  <li>A Mac, Windows, or Linux computer.</li>
+  <li>A Mac, Windows, or Linux computer. The commands come from a test on an M2 Mac with 8 GB;
+      Windows and Linux follow the two projects' own instructions, which the setup page links.</li>
   <li>Python 3.12 or newer.</li>
   <li>A quiet room and ten seconds of your voice.</li>
   <li>Your script as a text file.</li>
@@ -83,7 +84,10 @@ pip install omnivoice</code></pre>
   <li><strong>Qwen3-TTS, in its own folder.</strong>
       <pre><code>pip install -U qwen-tts</code></pre>
       Its model files download the first time you run it. That's the slow part.</li>
-  <li><strong>Point the program at your sample and your script.</strong> Press start. Both projects show the exact line on their own page. OmniVoice also opens a window you can click: <code>omnivoice-demo --port 8001</code>.</li>
+  <li><strong>Point the program at your sample and your text.</strong> One line does it:
+      <pre><code>omnivoice-infer --text "..." --ref_audio my_voice.wav --output out.wav</code></pre>
+      The long version, with your recorded words passed as <code>--ref_text</code>, is on the
+      <a href="files/setup.html">setup page</a>, step 6. Prefer clicking: <code>omnivoice-demo --port 8001</code>.</li>
 </ol>
 
 <h2 id="sample">Your sample</h2>
@@ -108,9 +112,12 @@ behind them.</p>
 <ul>
   <li><strong>The two programs fight.</strong> Separate folders fix it. In one folder, both stop
       working.</li>
-  <li><strong>A voice can't be described in words.</strong> The programs take gender, age, pitch,
-      accent and whisper. That's all.</li>
-  <li><strong>In clone mode, the accent comes from your sample.</strong> A Russian sample gives a Russian accent. For a native Spanish voice, record the sample in Spanish.</li>
+  <li><strong>A voice can't be described in free words.</strong> The lists are fixed: gender, age,
+      pitch, style, accent — one from each group. "Warm and confident" is on none of them, so it gets
+      ignored.</li>
+  <li><strong>In clone mode, the accent comes from your sample.</strong> A Russian sample carries a
+      Russian accent into other languages — OmniVoice's own note on cross-language cloning says the
+      same. For a native Spanish voice, record the sample in Spanish.</li>
   <li><strong>Keep the sample file.</strong> When a program updates, you rebuild the voice from it.
       Nothing else remembers your voice.</li>
 </ul>

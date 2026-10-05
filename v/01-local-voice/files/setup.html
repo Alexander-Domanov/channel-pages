@@ -75,23 +75,35 @@ pip install -U qwen-tts</code></pre>
 your prompt says <code>omnivoice</code>, you're in the wrong folder — check Step 2.</p>
 
 <h2>Step 5 — a first run, before your own voice</h2>
-<p>Don't record anything yet. Let the program speak with the voice it ships with. That way, whatever
-goes wrong later is the recording, not the install.</p>
-<pre><code>omnivoice-demo --port 8001</code></pre>
-<p>Open the address it prints, usually <code>http://localhost:8001</code>, type a sentence and press
-start. The first run downloads the model — a few gigabytes, and the slow part.</p>
-<p><strong>You should see</strong> pages of download lines in the terminal, then a page you can type
-into. If the page opens but no sound comes out, look at the terminal first: the answer is almost
-always there.</p>
+<p>Don't record anything yet. One line and the program speaks in a random voice — nothing of yours is
+involved, so nothing of yours can be the problem.</p>
+<pre><code>omnivoice-infer --text "This is a test for text to speech." --output hello.wav</code></pre>
+<p>The first run downloads the model — a few gigabytes, and the slow part. Then play
+<code>hello.wav</code>.</p>
+<p><strong>You should see</strong> pages of download lines, then a line saying where the file was
+written. <strong>You should hear</strong> a voice you've never heard, reading that sentence. No file?
+Read the last red line in the terminal.</p>
 
 <h2>Step 6 — your sample, then your own words</h2>
-<p>Now record ten seconds of yourself, put the file in the program's folder and point the program at
-it. Eight rules and the numbers behind them are on
-<a href="voice-clone.html">recording your sample</a>.</p>
-<p><strong>You should hear</strong> your voice reading the text you typed, not the built-in one. That
-is the whole thing working. Every video after this is script, paste, wait.</p>
+<p>Record ten seconds of yourself — eight rules on <a href="voice-clone.html">recording your
+sample</a> — and save it as <code>my_voice.wav</code> in the folder you're working in. Then point the
+program at it. One command does the whole job:</p>
+<pre><code>omnivoice-infer --text "This is me talking, not a robot." --ref_audio my_voice.wav --output mine.wav</code></pre>
+<p>Two things you can add:</p>
+<ul>
+  <li><strong>Tell it what's in your sample.</strong> Type the words you recorded and it stops
+      guessing: <code>--ref_text "the words you actually said"</code>. Leave it out and it
+      transcribes your recording by itself.</li>
+  <li><strong>File somewhere else?</strong> Give the whole path: <code>--ref_audio
+      ~/Desktop/my_voice.wav</code>.</li>
+</ul>
+<p>Rather click than type? <code>omnivoice-demo --port 8001</code> opens the same thing in a browser:
+the <em>Voice Clone</em> tab, your text on top, the file in <em>Reference Audio</em>, then
+Generate.</p>
+<p><strong>You should hear</strong> your voice reading the text you typed. That's the whole thing
+working — every video after it is script, paste, wait.</p>
 
-<h2>If it won't start</h2>
+<h2>Six that stop you</h2>
 <ul>
   <li><strong><code>python3: command not found</code>, or <code>python is not recognized</code>.</strong>
       Python isn't installed, or it isn't on PATH. On Windows, reinstall and tick <em>Add python.exe
@@ -104,10 +116,15 @@ is the whole thing working. Every video after this is script, paste, wait.</p>
       from <a href="https://pytorch.org/get-started/locally/">pytorch.org</a> again instead of typing
       it from memory.</li>
   <li><strong>Out of memory.</strong> Close other programs, try a shorter piece of text, then the
-      smaller model. The heaviest run here stayed under two gigabytes out of eight, so on a machine
-      of that size memory is rarely the real cause.</li>
+      smaller model. In my test the peak stayed under two gigabytes on an 8 GB Mac, so memory wasn't
+      the limit there — but your machine, your settings and your version of the maths library can
+      behave differently.</li>
   <li><strong>Permission denied.</strong> Something is trying to write outside your environment.
       Start a clean folder and repeat Step 2 in it.</li>
+</ul>
+
+<h2>If it looks stuck, sounds wrong, or stays silent</h2>
+<ul>
   <li><strong>It prints pages of text and looks stuck.</strong> That's the download. Leave it.</li>
   <li><strong>The voice sounds flat or rushed.</strong> That's the sample, not the settings. See
       <a href="voice-clone.html">recording your sample</a>.</li>
