@@ -10,6 +10,8 @@ table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
 th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid #8883; }
 th { font-weight: 600; }
 code { background: #8881; padding: .1rem .35rem; border-radius: .25rem; font-size: .92em; }
+h2.minor { font-size: 1rem; color: #777; }
+h2.minor + p, h2.minor + table, h2.minor + ul { font-size: .95rem; }
 .note { border-left: 3px solid #8884; padding-left: .9rem; color: #666; margin: 1.2rem 0; }
 a { color: #0a58ca; }
 ul, ol { padding-left: 1.25rem; }
@@ -31,6 +33,7 @@ footer.site { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid #8883
               font-size: .9rem; color: #666; }
 @media (prefers-color-scheme: dark) {
   body { background: #16181c; color: #e8e8e8; }
+  h2.minor { color: #9aa0a6; }
   p.lead, .note, nav.toc, ul.cards p, .empty, footer.site { color: #9aa0a6; }
   a { color: #7ab8ff; }
 }

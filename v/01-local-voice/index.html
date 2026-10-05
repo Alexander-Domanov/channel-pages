@@ -17,6 +17,10 @@
 <p class="lead">Record ten seconds of your voice once. Every video after that narrates itself in your
 voice, and you stop paying for it.</p>
 
+<p class="note"><strong>What you need:</strong> a Mac, Windows, or Linux computer; Python 3.12 or
+newer; a quiet room and ten seconds of your voice; your script as a text file; a few gigabytes free
+for the model files.</p>
+
 <nav class="toc">
   <a href="#why">Why bother</a>
   <a href="#words">Words you'll meet</a>
@@ -38,7 +42,7 @@ month.</p>
 <p>Five words turn up in every guide. None of them are hard.</p>
 <table>
   <tr><th>Word</th><th>What it means here</th></tr>
-  <tr><td>Sample</td><td>A short recording of you talking. Ten seconds is enough.</td></tr>
+  <tr><td>Sample</td><td>A short recording of you talking. Three to ten seconds.</td></tr>
   <tr><td>Clone</td><td>The program copies how you sound. It never records you again.</td></tr>
   <tr><td>Model</td><td>The part that turns text into speech. It downloads once.</td></tr>
   <tr><td>Environment</td><td>A folder where one program keeps its parts. Two programs, two folders.</td></tr>
@@ -57,7 +61,7 @@ one takes an hour. Keep Qwen3-TTS for a second voice, to compare a line that sou
 <p>Both are open source under the Apache 2.0 licence. You can sell what you make.</p>
 
 <h2 id="install">Install</h2>
-<p>The whole job is copying two commands and pressing enter.</p>
+<p>The setup is a few commands. The one part worth your full attention: the two programs go in separate folders.</p>
 <ol>
   <li><strong>Install Python once.</strong> Both programs are written in it. Get version 3.12 or newer
       from <a href="https://www.python.org/downloads/">python.org</a>.</li>
@@ -78,15 +82,16 @@ pip install omnivoice</code></pre>
 <h2 id="sample">Your sample</h2>
 <p>That recording decides how every video after it sounds. It takes a minute.</p>
 <ul>
-  <li>Ten seconds, in the quietest room you have.</li>
+  <li>Three to ten seconds. Ten is a good starting point.</li>
+  <li>Qwen3-TTS clones from a three-second sample, per its own docs. Longer clips slow both programs
+      down and can sound worse.</li>
   <li>Read something neutral. Not a list of instructions — one test recording read the instructions
       aloud.</li>
   <li>Read at the pace you want to be listened to. The voice copies your speed.</li>
   <li>Record in the language you want it to sound native in. A Russian sample gives a Russian accent
       everywhere else.</li>
 </ul>
-<p>Three to ten seconds, says OmniVoice's own guide. Longer clips slow it down and can sound worse. The
-<a href="files/voice-clone.html">sample page</a> has the full list of eight rules and the numbers
+<p>The <a href="files/voice-clone.html">sample page</a> has the full list of eight rules and the numbers
 behind them.</p>
 
 <h2 id="trip">What trips people up</h2>
@@ -100,7 +105,7 @@ behind them.</p>
       Nothing else remembers your voice.</li>
 </ul>
 
-<h2 id="money">What the others charge</h2>
+<h2 id="money" class="minor">What the others charge</h2>
 <table>
   <tr><th>Way to get a voice</th><th>Price</th></tr>
   <tr><td>ElevenLabs, Creator plan</td><td>$22 a month</td></tr>
@@ -114,12 +119,15 @@ pages, read on October 5, 2026. Speechify the same. The narrator rate is a studi
 voicecrafters.com. The language count is OmniVoice's own figure.</p>
 <p>Prices move, and first months are often discounted. Check before you pay anyone.</p>
 
-<h2 id="cant">What it can't do</h2>
+<h2 id="cant" class="minor">What it can't do</h2>
 <ul>
   <li>It sounds good. Not "good for a robot", just good. It still isn't a person. For a big brand's
       ad, hire a person.</li>
-  <li>Your own voice is yours. Someone else's needs their permission. With your own voice there's
-      nothing to flag on YouTube. On a cloned voice that isn't yours, the AI label is required.</li>
+  <li>Your own clone is fine by YouTube's rules. Their own list of examples puts "cloning one's own
+      voice to create voice overs" under things you don't have to disclose. Someone else's voice is the
+      opposite: get their permission first, and a realistic clone of a real person is exactly what
+      YouTube asks you to disclose. Rules change, so
+      <a href="https://support.google.com/youtube/answer/14328491">check the current page</a>.</li>
 </ul>
 
 <h2 id="files">Files and numbers</h2>
