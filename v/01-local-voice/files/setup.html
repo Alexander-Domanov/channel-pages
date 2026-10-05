@@ -13,35 +13,107 @@
 </header>
 
 <h1>Setting it up</h1>
-<p class="lead">Four things to get right. Then you wait for a download.</p>
+<p class="lead">Six steps. After each one there is a line telling you what you should see. If you don't
+see it, stop there — the next step won't work on top of it.</p>
 
-<h2>The four things</h2>
-<ol>
-  <li><strong>Python 3.12 or newer.</strong> From <a href="https://www.python.org/downloads/">python.org</a>.
-      Take the default options.</li>
-  <li><strong>One folder per program.</strong> Not the same folder. They need different versions of the
-      same shared piece, so together they break each other. Anywhere on your disk will do.</li>
-  <li><strong>The maths part first, then the program.</strong> In the OmniVoice folder:
-      <pre><code>pip install torch==2.8.0 torchaudio==2.8.0
+<h2>First, what computer do you have?</h2>
+<p>The steps are the same everywhere. Two places differ: how you install Python, and one line in the
+OmniVoice install.</p>
+<ul>
+  <li><strong>Mac.</strong> Everything below is written the way it looks on macOS.</li>
+  <li><strong>Windows.</strong> Install Python from
+      <a href="https://www.python.org/downloads/">python.org</a> and tick <em>Add python.exe to
+      PATH</em> on the first screen of the installer. In the terminal, use <code>py</code> where the
+      lines below say <code>python3</code>.</li>
+  <li><strong>Linux.</strong> Python is usually there already. Check it before installing another:
+      <code>python3 --version</code>. Anything older than 3.12, get a newer one.</li>
+</ul>
+<p>I ran both programs on a Mac with an M2 chip and 8 GB of memory. The Windows and Linux lines come
+from the two projects' own installation pages, linked at the bottom — I didn't run them myself.
+If something doesn't match what you see, trust their page over this one.</p>
+
+<h2>Step 1 — Python 3.12 or newer</h2>
+<p>Install it from <a href="https://www.python.org/downloads/">python.org</a> and take the default
+options.</p>
+<pre><code>python3 --version</code></pre>
+<p><strong>You should see</strong> something like <code>Python 3.12.4</code>. If you get
+<code>command not found</code>, Python isn't installed yet or isn't on your PATH — reinstall it with
+the default options and open a new terminal window.</p>
+
+<h2>Step 2 — a folder of its own for each program</h2>
+<p>This is the step people skip, and the one that breaks things a week later. Both programs need
+different versions of the same shared piece of maths. Put them in the same place and they break each
+other.</p>
+<p>A folder that holds one program and its parts is called an environment. One program, one
+environment.</p>
+<pre><code>mkdir omnivoice && cd omnivoice
+python3 -m venv .venv
+source .venv/bin/activate</code></pre>
+<p>On Windows, the last line is:</p>
+<pre><code>.venv\Scripts\activate</code></pre>
+<p><strong>You should see</strong> the environment name in brackets at the start of your prompt:
+<code>(.venv)</code>. Everything from here happens in this window. Close it and nothing is lost —
+open a new one, go back into the folder and activate again.</p>
+
+<h2>Step 3 — the maths part, then the program</h2>
+<pre><code>pip install torch==2.8.0 torchaudio==2.8.0
 pip install omnivoice</code></pre>
-      On Windows or Linux with an NVIDIA card, get the first line from
-      <a href="https://pytorch.org/get-started/locally/">pytorch.org</a> instead.
-      <br>Qwen3-TTS is one line, in its own folder:
-      <pre><code>pip install -U qwen-tts</code></pre></li>
-  <li><strong>Room to download.</strong> A few gigabytes of free space and a steady connection. The
-      model files arrive on their own the first time you run the program, and that's the slow part.</li>
-</ol>
+<p>On Windows or Linux with an NVIDIA card, don't type the first line — take it from
+<a href="https://pytorch.org/get-started/locally/">pytorch.org</a>. The wrong build either fails
+outright or quietly falls back to the slower processor.</p>
+<p><strong>You should see</strong> a run of "Installing collected packages" lines, then
+"Successfully installed". Nothing to read while it works. That's normal, and it can take a few
+minutes.</p>
+
+<h2>Step 4 — Qwen3-TTS, in its own folder</h2>
+<pre><code>cd ..
+mkdir qwen3-tts && cd qwen3-tts
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U qwen-tts</code></pre>
+<p><strong>You should see</strong> the same "Successfully installed" line. If the environment name in
+your prompt says <code>omnivoice</code>, you're in the wrong folder — check Step 2.</p>
+
+<h2>Step 5 — a first run, before your own voice</h2>
+<p>Don't record anything yet. Let the program speak with the voice it ships with. That way, whatever
+goes wrong later is the recording, not the install.</p>
+<pre><code>omnivoice-demo --port 8001</code></pre>
+<p>Open the address it prints, usually <code>http://localhost:8001</code>, type a sentence and press
+start. The first run downloads the model — a few gigabytes, and the slow part.</p>
+<p><strong>You should see</strong> pages of download lines in the terminal, then a page you can type
+into. If the page opens but no sound comes out, look at the terminal first: the answer is almost
+always there.</p>
+
+<h2>Step 6 — your sample, then your own words</h2>
+<p>Now record ten seconds of yourself, put the file in the program's folder and point the program at
+it. Eight rules and the numbers behind them are on
+<a href="voice-clone.html">recording your sample</a>.</p>
+<p><strong>You should hear</strong> your voice reading the text you typed, not the built-in one. That
+is the whole thing working. Every video after this is script, paste, wait.</p>
 
 <h2>If it won't start</h2>
 <ul>
-  <li><strong>It says a piece is missing.</strong> You're probably in the other program's folder. Make
-      a clean folder and install again.</li>
-  <li><strong>It prints pages of text and seems stuck.</strong> That's the download. Leave it.</li>
-  <li><strong>The voice sounds flat or rushed.</strong> That's the sample, not the settings. Record
-      ten quiet seconds at the pace you want — <a href="voice-clone.html">recording your sample</a>.</li>
-  <li><strong>Nothing comes out.</strong> Nine times out of ten there's no sample file, or the path to
-      it is empty. Check that first.</li>
-  <li><strong>Still stuck?</strong> Both projects keep their instructions on their own page.
+  <li><strong><code>python3: command not found</code>, or <code>python is not recognized</code>.</strong>
+      Python isn't installed, or it isn't on PATH. On Windows, reinstall and tick <em>Add python.exe
+      to PATH</em>, then open a fresh terminal.</li>
+  <li><strong><code>pip: command not found</code>.</strong> The environment isn't active. Activate it
+      again (Step 2) and run the same line.</li>
+  <li><strong><code>No module named ...</code>.</strong> You're in the other program's folder. Look at
+      the name in brackets in your prompt — two programs, two environments.</li>
+  <li><strong>A CUDA error.</strong> That's the NVIDIA build of the maths part. Get the install line
+      from <a href="https://pytorch.org/get-started/locally/">pytorch.org</a> again instead of typing
+      it from memory.</li>
+  <li><strong>Out of memory.</strong> Close other programs, try a shorter piece of text, then the
+      smaller model. The heaviest run here stayed under two gigabytes out of eight, so on a machine
+      of that size memory is rarely the real cause.</li>
+  <li><strong>Permission denied.</strong> Something is trying to write outside your environment.
+      Start a clean folder and repeat Step 2 in it.</li>
+  <li><strong>It prints pages of text and looks stuck.</strong> That's the download. Leave it.</li>
+  <li><strong>The voice sounds flat or rushed.</strong> That's the sample, not the settings. See
+      <a href="voice-clone.html">recording your sample</a>.</li>
+  <li><strong>Nothing comes out at all.</strong> Nine times out of ten the sample file is missing, or
+      the path to it is empty. Check that first.</li>
+  <li><strong>Still stuck?</strong> Both projects keep their own instructions —
       <a href="https://github.com/k2-fsa/OmniVoice">OmniVoice</a>,
       <a href="https://github.com/QwenLM/Qwen3-TTS">Qwen3-TTS</a>. Search there for the exact red text
       you got.</li>

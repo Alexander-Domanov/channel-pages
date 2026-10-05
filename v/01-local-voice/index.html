@@ -71,7 +71,9 @@ one takes an hour. Keep Qwen3-TTS for a second voice, to compare a line that sou
   <li><strong>Install Python once.</strong> Both programs are written in it. Get version 3.12 or newer
       from <a href="https://www.python.org/downloads/">python.org</a>.</li>
   <li><strong>Make one folder for each program.</strong> This is the step people skip. The two programs
-      need different versions of the same shared piece. In one folder they break each other.</li>
+      need different versions of the same shared piece. In one folder they break each other. Those
+      folders are called environments, and the <a href="files/setup.html">setup page</a> has the two
+      lines that make one.</li>
   <li><strong>In the OmniVoice folder, run two lines.</strong> The first installs the maths part, the
       second installs the program.
       <pre><code>pip install torch==2.8.0 torchaudio==2.8.0
@@ -86,6 +88,9 @@ pip install omnivoice</code></pre>
 
 <h2 id="sample">Your sample</h2>
 <p>That recording decides how every video after it sounds. It takes a minute.</p>
+<p>Run the program once before you record, with the voice it ships with (step 5 on the
+<a href="files/setup.html">setup page</a>). Then whatever goes wrong later is the recording, not the
+install.</p>
 <ul>
   <li>Three to ten seconds. Ten is a good starting point.</li>
   <li>Qwen3-TTS clones from a three-second sample, per its own docs. Longer clips slow both programs
@@ -138,7 +143,7 @@ voicecrafters.com. The language count is OmniVoice's own figure.</p>
 <h2 id="files">Files and numbers</h2>
 <ul>
   <li><a href="files/measurements.html">How long you'll wait</a> — both programs timed on an ordinary laptop.</li>
-  <li><a href="files/setup.html">Setting it up</a> — the four things to get right, and what to do when it won't start.</li>
+  <li><a href="files/setup.html">Setting it up</a> — six steps, what you should see after each, and what to do when it won't start.</li>
   <li><a href="files/voice-clone.html">Recording your sample</a> — ten seconds that decide the whole channel.</li>
 </ul>
 
