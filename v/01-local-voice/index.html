@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01 — Voiceover for free instead of $22 a month</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0 auto; max-width: 44rem; padding: 2rem 1.2rem 4rem;
+         font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  h1 { font-size: 1.5rem; margin-bottom: .2rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  p.lead { color: #666; margin-top: .2rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid #8883; }
+  code { background: #8881; padding: .1rem .3rem; border-radius: .2rem; }
+  .note { border-left: 3px solid #8884; padding-left: .9rem; color: #666; }
+  a { color: #0a58ca; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #16181c; color: #e8e8e8; }
+    p.lead, .note { color: #9aa0a6; }
+    a { color: #7ab8ff; }
+  }
+</style>
+</head>
+<body>
+<h1>Voiceover for free instead of $22 a month</h1>
+<p class="lead">The video is coming. I'll drop the link here the day it goes live.</p>
+
+<h2>What everyone else charges</h2>
+<table>
+  <tr><th>Way to get a voice</th><th>Price</th></tr>
+  <tr><td>ElevenLabs, Creator plan</td><td>$22 a month</td></tr>
+  <tr><td>Descript</td><td>$24–35 a month</td></tr>
+  <tr><td>Speechify</td><td>$29 a month</td></tr>
+  <tr><td>A human voice actor, 5 finished minutes</td><td>from $350</td></tr>
+</table>
+<p class="note">Prices checked on October 2, 2026, straight off their pricing pages. They move, so check again before you pay for anything.</p>
+
+<h2>What I did instead</h2>
+<p>I put two open models on a MacBook with an M2 chip and 8 GB of memory. No NVIDIA card in sight,
+the Apple graphics cores do the math. Both models are Apache 2.0, and that matters for exactly one
+reason: you're allowed to make money with what they produce.</p>
+
+<h2>The part nobody warns you about</h2>
+<p>The two models can't live in the same place. One needs library version 5.3 or newer, the other is
+pinned to 4.57. Install them together and neither one works. Keep two separate environments and
+you'll never think about it again.</p>
+
+<h2>The voice</h2>
+<p>Both models clone a voice from a 3–10 second sample. Record it once, keep the file, and it narrates
+every video after that. Two things follow from that, and both bit me:</p>
+<ul>
+  <li>The accent comes from the sample, not from the language. A sample in Russian gives you
+      Russian-accented Spanish. Want Mexican Spanish? Record a Spanish sample, about 8–9 seconds.</li>
+  <li>You can't describe a voice in words. The model takes a fixed list: gender, age, pitch, accent,
+      whisper. That's it. Cloning is easier than inventing.</li>
+</ul>
+
+<h2>Where it falls short</h2>
+<ul>
+  <li>It sounds good. Not "good for a robot" good, just good. But it isn't a person. On YouTube you
+      won't hear the difference; in a big brand's ad you will, and there I'd still hire the human.</li>
+  <li>If you clone your own voice, YouTube doesn't ask you to flag the video as AI. Clone someone
+      else's and it does, and you also need their permission.</li>
+</ul>
+
+<h2>Files and numbers</h2>
+<ul>
+  <li><a href="files/measurements.html">The measurements</a> — how much audio I got for how much waiting.</li>
+  <li><a href="files/setup.html">Setup rules</a> — the two environments, and what to check first.</li>
+  <li><a href="files/voice-clone.html">Voice sample rules</a> — how to record one that doesn't come back weird.</li>
+</ul>
+</body>
+</html>
