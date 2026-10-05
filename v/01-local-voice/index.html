@@ -14,121 +14,77 @@
 </header>
 
 <h1>A voice for your videos, free</h1>
-<p class="lead">Record ten seconds of your voice once. Every video after that narrates itself in your
-voice, and you stop paying for it.</p>
+<p class="lead">I wanted to know whether my laptop could narrate my videos instead of a monthly voice
+subscription. It can. This page is the whole experiment.</p>
 
-<p class="note"><strong>What you need:</strong></p>
-<ul class="note">
-  <li>A Mac, Windows, or Linux computer. The commands come from a test on an M2 Mac with 8 GB;
-      Windows and Linux follow the two projects' own instructions, which the setup page links.</li>
-  <li>Python 3.12 or newer.</li>
-  <li>A quiet room and ten seconds of your voice.</li>
-  <li>Your script as a text file.</li>
-  <li>A few gigabytes free for the model files.</li>
-</ul>
+<p class="note"><strong>Tested on:</strong> a Mac with an M2 chip and 8 GB of memory. Both programs run
+on Windows and Linux too; I didn't test those, and the setup page marks which lines come from the
+projects' own instructions rather than from me.</p>
 
 <nav class="toc">
-  <a href="#why">Why bother</a>
-  <a href="#words">Words you'll meet</a>
-  <a href="#programs">Two programs</a>
-  <a href="#install">Install</a>
-  <a href="#sample">Your sample</a>
-  <a href="#trip">What trips people up</a>
-  <a href="#money">What the others charge</a>
-  <a href="#cant">What it can't do</a>
-  <a href="#files">Files</a>
+  <a href="#used">What I used</a>
+  <a href="#went">How it went</a>
+  <a href="#try">Try it yourself</a>
+  <a href="#matters">What matters</a>
+  <a href="#money">What it costs</a>
+  <a href="#catch">The catch</a>
 </nav>
 
-<p class="note">Following the video? Go straight to <a href="#install">Install</a>, then
-<a href="#sample">Your sample</a>. The other sections answer questions that come up later.</p>
+<h2 id="used">What I used</h2>
+<ul>
+  <li><strong>OmniVoice</strong> — the fast one. Open source, 646 languages.
+      <a href="https://github.com/k2-fsa/OmniVoice">github.com/k2-fsa/OmniVoice</a></li>
+  <li><strong>Qwen3-TTS</strong> — the second voice, to compare against. Open source, ten languages.
+      <a href="https://github.com/QwenLM/Qwen3-TTS">github.com/QwenLM/Qwen3-TTS</a></li>
+  <li>Python 3.12, with each program in its own folder.</li>
+  <li>Ten seconds of my own voice, recorded once.</li>
+</ul>
+<p>Both run on the laptop. Nothing is sent anywhere, neither needs a graphics card, and both licences
+allow commercial use — though if you plan to sell something built on top of the model, read the
+licence once yourself.</p>
 
-<h2 id="why">Why bother</h2>
-<p>Three videos a week, twenty minutes of talking in each. In subscriptions that runs $22 to $35 a
-month.</p>
-<p>Your laptop does the same job. You write the next script while it talks.</p>
-
-<h2 id="words">Words you'll meet</h2>
-<p>Eight words turn up in a guide like this. None of them are hard.</p>
+<h2 id="went">How it went</h2>
+<p>The same twenty-two seconds of speech, given to both programs on the same machine:</p>
 <table>
-  <tr><th>Word</th><th>What it means here</th></tr>
-  <tr><td>Terminal</td><td>The window where you type the commands. Nothing scary lives in there.</td></tr>
-  <tr><td>Python</td><td>The language both programs are written in. Installed once.</td></tr>
-  <tr><td>pip</td><td>The part of Python that fetches the programs. One line downloads one program.</td></tr>
-  <tr><td>Sample</td><td>A short recording of you talking. Three to ten seconds.</td></tr>
-  <tr><td>Clone</td><td>The program copies how you sound. It never records you again.</td></tr>
-  <tr><td>Model</td><td>The part that turns text into speech. It downloads once.</td></tr>
-  <tr><td>Environment</td><td>A folder where one program keeps its parts. Two programs, two folders.</td></tr>
-  <tr><td>Local</td><td>It runs on your laptop. Nothing goes to a server.</td></tr>
+  <tr><th>Program</th><th>22 seconds of speech</th><th>A 20-minute narration</th></tr>
+  <tr><td>OmniVoice</td><td>26 seconds</td><td>about 23 minutes</td></tr>
+  <tr><td>Qwen3-TTS</td><td>73 seconds</td><td>about an hour</td></tr>
 </table>
+<p>Memory was never the problem: peak use stayed under 2 GB while it worked.</p>
+<p><strong>OmniVoice is the one to start with.</strong> Twenty minutes of narration takes it about
+twenty-three minutes, which means the next script gets written while it talks. Keep Qwen3-TTS for a
+second voice, to compare a line that sounds off.</p>
+<p><a href="files/measurements.html">How long you'll wait</a> — both programs timed on the same machine.</p>
 
-<h2 id="programs">Two programs, both free</h2>
-<p><strong>OmniVoice</strong> is the fast one. It comes from k2-fsa, an open research team. It knows
-646 languages, Spanish among them. In testing, twenty-two seconds of speech came back in twenty-six.
-<a href="https://github.com/k2-fsa/OmniVoice">github.com/k2-fsa/OmniVoice</a></p>
-<p><strong>Qwen3-TTS</strong> comes from the Qwen team at Alibaba. It knows ten languages, Spanish
-among them. The same twenty-two seconds took seventy-three.
-<a href="https://github.com/QwenLM/Qwen3-TTS">github.com/QwenLM/Qwen3-TTS</a></p>
-<p>Start with OmniVoice. Twenty minutes of narration takes it about twenty-three minutes. The other
-one takes an hour. Keep Qwen3-TTS for a second voice, to compare a line that sounds off.</p>
-<p>Both are open source under the Apache 2.0 licence, and that licence allows commercial use. If you plan to sell something built on top of the model, read the licence once yourself.</p>
-
-<h2 id="install">Install</h2>
-<p>The setup is a few commands. The one part worth your full attention: the two programs go in separate folders.</p>
-<ol>
-  <li><strong>Install Python once.</strong> Both programs are written in it. Get version 3.12 or newer
-      from <a href="https://www.python.org/downloads/">python.org</a>.</li>
-  <li><strong>Make one folder for each program.</strong> This is the step people skip. The two programs
-      need different versions of the same shared piece. In one folder they break each other. Those
-      folders are called environments, and the <a href="files/setup.html">setup page</a> has the two
-      lines that make one.</li>
-  <li><strong>In the OmniVoice folder, run two lines.</strong> The first installs the maths part, the
-      second installs the program.
-      <pre><code>pip install torch==2.8.0 torchaudio==2.8.0
+<h2 id="try">Try it yourself</h2>
+<p>Python 3.12 or newer, then these two lines. The one step people skip: each program goes in its own
+folder. In one folder they break each other.</p>
+<pre><code>pip install torch==2.8.0 torchaudio==2.8.0
 pip install omnivoice</code></pre>
-      On Windows or Linux with an NVIDIA card, the first line is different. The
-      <a href="https://github.com/k2-fsa/OmniVoice">OmniVoice page</a> has it, under Installation.</li>
-  <li><strong>Qwen3-TTS, in its own folder.</strong>
-      <pre><code>pip install -U qwen-tts</code></pre>
-      Its model files download the first time you run it. That's the slow part.</li>
-  <li><strong>Point the program at your sample and your text.</strong> One line does it:
-      <pre><code>omnivoice-infer --text "..." --ref_audio my_voice.wav --output out.wav</code></pre>
-      The long version, with your recorded words passed as <code>--ref_text</code>, is on the
-      <a href="files/setup.html">setup page</a>, step 6. Prefer clicking: <code>omnivoice-demo --port 8001</code>.</li>
-</ol>
+<p>The first run downloads the model — a few gigabytes, once. Then hand the program your text and your
+sample:</p>
+<pre><code>omnivoice-infer --text "..." --ref_audio my_voice.wav --output mine.wav</code></pre>
+<p>Prefer clicking to typing: <code>omnivoice-demo --port 8001</code> opens the same program in your
+browser.</p>
+<p><strong>Every command, what you should see after it, and what to do when it won't start:</strong>
+<a href="files/setup.html">Setting it up</a>. <strong>The recording it copies:</strong>
+<a href="files/voice-clone.html">ten seconds of your voice</a>.</p>
 
-<h2 id="sample">Your sample</h2>
-<p>That recording decides how every video after it sounds. It takes a minute.</p>
-<p>Run the program once before you record, with the voice it ships with (step 5 on the
-<a href="files/setup.html">setup page</a>). Then whatever goes wrong later is the recording, not the
-install.</p>
+<h2 id="matters">What matters</h2>
+<p>Four things decided how good this sounds, and only one of them is the software.</p>
 <ul>
-  <li>Three to ten seconds. Ten is a good starting point.</li>
-  <li>Qwen3-TTS clones from a three-second sample, per its own docs. Longer clips slow both programs
-      down and can sound worse.</li>
-  <li>Read something neutral. Not a list of instructions — one test recording read the instructions
-      aloud.</li>
-  <li>Read at the pace you want to be listened to. The voice copies your speed.</li>
-  <li>Record in the language you want it to sound native in. A Russian sample gives a Russian accent
-      everywhere else.</li>
-</ul>
-<p>The <a href="files/voice-clone.html">sample page</a> has the full list of eight rules and the numbers
-behind them.</p>
-
-<h2 id="trip">What trips people up</h2>
-<ul>
-  <li><strong>The two programs fight.</strong> Separate folders fix it. In one folder, both stop
-      working.</li>
-  <li><strong>A voice can't be described in free words.</strong> The lists are fixed: gender, age,
-      pitch, style, accent — one from each group. "Warm and confident" is on none of them, so it gets
-      ignored.</li>
-  <li><strong>In clone mode, the accent comes from your sample.</strong> A Russian sample carries a
-      Russian accent into other languages — OmniVoice's own note on cross-language cloning says the
-      same. For a native Spanish voice, record the sample in Spanish.</li>
-  <li><strong>Keep the sample file.</strong> When a program updates, you rebuild the voice from it.
-      Nothing else remembers your voice.</li>
+  <li><strong>The sample does most of the work.</strong> Ten seconds, read at the pace you want to be
+      listened to. Record it in the language you want the voice to sound native in — a Russian sample
+      carries a Russian accent into English and Spanish.</li>
+  <li><strong>Keep the recording.</strong> When a program updates, the voice gets rebuilt from that
+      file. Nothing else remembers it.</li>
+  <li><strong>Phone memos are the wrong format.</strong> They come out as <code>.m4a</code> and the
+      program wants <code>.wav</code>; the sample page has three ways to fix that.</li>
+  <li><strong>The two programs need two folders.</strong> This is the trap that costs an evening, and
+      the setup page walks through it line by line.</li>
 </ul>
 
-<h2 id="money" class="minor">What the others charge</h2>
+<h2 id="money" class="minor">What it costs</h2>
 <table>
   <tr><th>Way to get a voice</th><th>Price</th></tr>
   <tr><td>ElevenLabs, Creator plan</td><td>$22 a month</td></tr>
@@ -137,28 +93,21 @@ behind them.</p>
   <tr><td>A human narrator, up to five finished minutes</td><td>$350–400</td></tr>
   <tr><td>OmniVoice or Qwen3-TTS on your laptop</td><td>$0</td></tr>
 </table>
-<p><strong>Where the numbers come from.</strong> ElevenLabs and Descript come from their own pricing
-pages, read on October 5, 2026. Speechify the same. The narrator rate is a studio price list at
-voicecrafters.com. The language count is OmniVoice's own figure.</p>
-<p>Prices move, and first months are often discounted. Check before you pay anyone.</p>
+<p><strong>Where the numbers come from.</strong> ElevenLabs, Descript and Speechify come from their own
+pricing pages, read on October 5, 2026. The narrator rate is a studio price list at voicecrafters.com.
+The language count is OmniVoice's own figure. Prices move, and first months are often discounted —
+check before you pay anyone.</p>
+<p>$0 means no subscription. Your time and the electricity aren't in the table.</p>
 
-<h2 id="cant" class="minor">What it can't do</h2>
-<ul>
-  <li>It sounds good. Not "good for a robot", just good. It still isn't a person. For a big brand's
-      ad, hire a person.</li>
-  <li>Your own clone is fine by YouTube's rules. Their own list of examples puts "cloning one's own
-      voice to create voice overs" under things you don't have to disclose. Someone else's voice is the
-      opposite. Get their permission first. A realistic clone of a real person is exactly what
-      YouTube asks you to disclose. Rules change, so
-      <a href="https://support.google.com/youtube/answer/14328491">check the current page</a>.</li>
-</ul>
-
-<h2 id="files">Files and numbers</h2>
-<ul>
-  <li><a href="files/measurements.html">How long you'll wait</a> — both programs timed on an ordinary laptop.</li>
-  <li><a href="files/setup.html">Setting it up</a> — six steps, what you should see after each, and what to do when it won't start.</li>
-  <li><a href="files/voice-clone.html">Recording your sample</a> — ten seconds that decide the whole channel.</li>
-</ul>
+<h2 id="catch">The catch</h2>
+<p>It sounds good. Not "good for a robot", just good — and it still isn't a person. For narration on a
+channel like this one, that's enough for me. For a brand's ad, I would hire a narrator.</p>
+<p>Your own clone is fine by YouTube's rules. Someone else's voice needs their permission first and a
+disclosure on the video — <a href="files/voice-clone.html">the sample page</a> has the short version,
+<a href="https://support.google.com/youtube/answer/14328491">YouTube's own page</a> has the rules, and
+they do change.</p>
+<p><strong>Verdict:</strong> if the laptop is already on your desk, there's little reason to pay for
+every minute of narration — unless you want the convenience of a cloud service. I didn't.</p>
 
 <footer class="site">
   <p><a href="../../">All the videos</a></p>
