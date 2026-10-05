@@ -72,8 +72,7 @@ pip install omnivoice</code></pre>
   <li><strong>Qwen3-TTS, in its own folder.</strong>
       <pre><code>pip install -U qwen-tts</code></pre>
       Its model files download the first time you run it. That's the slow part.</li>
-  <li><strong>Point the program at your sample and your script.</strong> Press start. Both projects
-      show the exact line on their own page, and both have a window you can click.</li>
+  <li><strong>Point the program at your sample and your script.</strong> Press start. Both projects show the exact line on their own page. OmniVoice also opens a window you can click: <code>omnivoice-demo --port 8001</code>.</li>
 </ol>
 
 <h2 id="sample">Your sample</h2>
@@ -86,7 +85,7 @@ pip install omnivoice</code></pre>
   <li>Record in the language you want it to sound native in. A Russian sample gives a Russian accent
       everywhere else.</li>
 </ul>
-<p>Longer than nine seconds changes nothing. Under six comes out rushed. The
+<p>Three to ten seconds, says OmniVoice's own guide. Longer clips slow it down and can sound worse. The
 <a href="files/voice-clone.html">sample page</a> has the full list of eight rules and the numbers
 behind them.</p>
 
@@ -96,7 +95,7 @@ behind them.</p>
       working.</li>
   <li><strong>A voice can't be described in words.</strong> The programs take gender, age, pitch,
       accent and whisper. That's all.</li>
-  <li><strong>The accent comes from the sample.</strong> Not from a setting.</li>
+  <li><strong>In clone mode, the accent comes from your sample.</strong> A Russian sample gives a Russian accent. For a native Spanish voice, record the sample in Spanish.</li>
   <li><strong>Keep the sample file.</strong> When a program updates, you rebuild the voice from it.
       Nothing else remembers your voice.</li>
 </ul>
