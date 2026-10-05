@@ -39,6 +39,21 @@ step people rush.</p>
       Nothing else remembers it.</li>
 </ol>
 
+<h2>The file has to be a WAV</h2>
+<p>Phone voice memos save as <code>.m4a</code>. The program reads <code>.wav</code>, <code>.flac</code>
+and <code>.ogg</code> straight away; for <code>.m4a</code> and <code>.mp3</code> it needs
+<code>ffmpeg</code> installed, which you may not have. Three ways to a WAV, easiest first:</p>
+<ol>
+  <li><strong>Record it in the demo page.</strong> The <em>Reference Audio</em> field has a record
+      button, so the file never passes through your hands at all.</li>
+  <li><strong>Set your recorder to save WAV.</strong> Some phone apps can. If yours can't, use the
+      demo.</li>
+  <li><strong>Convert it on a Mac.</strong> The tool is already there, nothing to install:
+      <pre><code>afconvert -f WAVE -d LEI16@24000 memo.m4a memo.wav</code></pre></li>
+</ol>
+<p class="note">I ran that line on our own Mac — <code>afconvert</code> is part of macOS. On Windows I
+haven't tested any conversion; the project's own README is the reference there.</p>
+
 <h2>What you can't do</h2>
 <p>You can't describe a voice in free words. "Warm, confident, documentary" gets you nowhere.</p>
 <p>What the model does take is a fixed list of attributes in five groups: gender, age, pitch, style

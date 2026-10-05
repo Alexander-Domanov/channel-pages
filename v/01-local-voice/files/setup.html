@@ -28,17 +28,33 @@ OmniVoice install.</p>
   <li><strong>Linux.</strong> Python is usually there already. Check it before installing another:
       <code>python3 --version</code>. Anything older than 3.12, get a newer one.</li>
 </ul>
-<p>I ran both programs on a Mac with an M2 chip and 8 GB of memory. The Windows and Linux lines come
-from the two projects' own installation pages, linked at the bottom — I didn't run them myself.
-If something doesn't match what you see, trust their page over this one.</p>
+<p class="note"><strong>What is tested, and what isn't.</strong> I ran both programs on a Mac with an
+M2 chip and 8 GB of memory. That path is tested by me. The Windows and Linux lines I took from the two
+projects' own installation pages and from Python's own manual, linked at the bottom — I did not run
+them. If something doesn't match what you see, trust their page over this one.</p>
 
 <h2>Step 1 — Python 3.12 or newer</h2>
 <p>Install it from <a href="https://www.python.org/downloads/">python.org</a> and take the default
-options.</p>
+options. Then check what you actually got:</p>
 <pre><code>python3 --version</code></pre>
-<p><strong>You should see</strong> something like <code>Python 3.12.4</code>. If you get
-<code>command not found</code>, Python isn't installed yet or isn't on your PATH — reinstall it with
-the default options and open a new terminal window.</p>
+<p><strong>You should see</strong> <code>Python 3.12</code> or higher. Whatever number python.org hands
+out now is fine — 3.12, 3.13, 3.14. Three other answers mean three different things:</p>
+<ul>
+  <li><strong>An older number, like 3.9.6.</strong> That's the copy Apple ships for its own tools, and
+      Python's manual says leave it alone. The one you just installed sits behind it. Open a
+      <em>new</em> terminal window and check again — the installer only takes effect in windows opened
+      after it.</li>
+  <li><strong>The old number again in a new window.</strong> Your new Python is installed but not first
+      in line. Call it by its full path instead of <code>python3</code> — here and in step 2. On a Mac
+      that path looks like
+      <code>/Library/Frameworks/Python.framework/Versions/3.14/bin/python3</code>; the version folder
+      is the number you installed, and
+      <code>ls /Library/Frameworks/Python.framework/Versions/</code> shows what's there.</li>
+  <li><strong><code>command not found</code>.</strong> Nothing is installed yet. Run the python.org
+      installer, open a new terminal window, check again.</li>
+</ul>
+<p class="note">Our own Mac took a different road: its Python 3.12 came from <code>uv</code>, a tool
+that installs Python itself. The paragraph above is the official path, not the one we ran.</p>
 
 <h2>Step 2 — a folder of its own for each program</h2>
 <p>This is the step people skip, and the one that breaks things a week later. Both programs need
@@ -46,14 +62,35 @@ different versions of the same shared piece of maths. Put them in the same place
 other.</p>
 <p>A folder that holds one program and its parts is called an environment. One program, one
 environment.</p>
-<pre><code>mkdir omnivoice && cd omnivoice
+<p>Now, where these lines go. A terminal is a window where you type commands instead of clicking.
+Open it:</p>
+<ul>
+  <li><strong>Mac:</strong> press <code>⌘</code> and <code>Space</code> together, type
+      <code>Terminal</code>, press Enter. Or Finder → Applications → Utilities → Terminal.</li>
+  <li><strong>Windows:</strong> press the Windows key, type <code>PowerShell</code>, press Enter.</li>
+  <li><strong>Linux:</strong> <code>Ctrl</code> + <code>Alt</code> + <code>T</code>.</li>
+</ul>
+<p>Everything from here on goes into that window: one line, then Enter, then the next line. Four lines
+make a folder, step into it, and put a copy of Python inside:</p>
+<pre><code>mkdir omnivoice
+cd omnivoice
 python3 -m venv .venv
 source .venv/bin/activate</code></pre>
-<p>On Windows, the last line is:</p>
-<pre><code>.venv\Scripts\activate</code></pre>
+<p>On Windows the activation line depends on which window you opened:</p>
+<ul>
+  <li><strong>PowerShell:</strong> <code>.venv\Scripts\Activate.ps1</code>. If it answers that running
+      scripts is disabled on this system, run Python's own fix once, then try again:
+      <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>.</li>
+  <li><strong>Command Prompt:</strong> <code>.venv\Scripts\activate.bat</code>. This window doesn't
+      change the prompt, so check with <code>pip list</code> — a short list of packages and no error
+      means it worked.</li>
+</ul>
 <p><strong>You should see</strong> the environment name in brackets at the start of your prompt:
-<code>(.venv)</code>. Everything from here happens in this window. Close it and nothing is lost —
-open a new one, go back into the folder and activate again.</p>
+<code>(.venv)</code>. Everything from here happens in this window. Close it and nothing is lost — open
+a new one, go back into the folder and activate again. Lost your place? <code>pwd</code> prints the
+folder you're standing in.</p>
+<p class="note">The Windows lines come from Python's manual and the projects' own instructions; I
+haven't run them. The Mac lines I ran.</p>
 
 <h2>Step 3 — the maths part, then the program</h2>
 <pre><code>pip install torch==2.8.0 torchaudio==2.8.0
@@ -67,7 +104,8 @@ minutes.</p>
 
 <h2>Step 4 — Qwen3-TTS, in its own folder</h2>
 <pre><code>cd ..
-mkdir qwen3-tts && cd qwen3-tts
+mkdir qwen3-tts
+cd qwen3-tts
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -U qwen-tts</code></pre>
@@ -86,8 +124,9 @@ Read the last red line in the terminal.</p>
 
 <h2>Step 6 — your sample, then your own words</h2>
 <p>Record ten seconds of yourself — eight rules on <a href="voice-clone.html">recording your
-sample</a> — and save it as <code>my_voice.wav</code> in the folder you're working in. Then point the
-program at it. One command does the whole job:</p>
+sample</a> — and save it as <code>my_voice.wav</code> in the folder you're working in. The format
+matters: a phone memo usually lands as <code>.m4a</code>, and the sample page lists three ways to deal
+with that. Then point the program at it — one command does the whole job:</p>
 <pre><code>omnivoice-infer --text "This is me talking, not a robot." --ref_audio my_voice.wav --output mine.wav</code></pre>
 <p>Two things you can add:</p>
 <ul>
