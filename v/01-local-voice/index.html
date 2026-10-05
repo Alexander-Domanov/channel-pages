@@ -20,7 +20,8 @@ in your voice, and you stop paying a monthly fee for it.</p>
 <nav class="toc">
   <a href="#why">Why bother</a>
   <a href="#words">Words you'll meet</a>
-  <a href="#ways">Two ways to do this</a>
+  <a href="#which">Which program</a>
+  <a href="#install">How to install</a>
   <a href="#do">What you do</a>
   <a href="#trip">What trips people up</a>
   <a href="#money">What the others charge</a>
@@ -31,26 +32,60 @@ in your voice, and you stop paying a monthly fee for it.</p>
 <h2 id="why">Why bother</h2>
 <p>Three videos a week with twenty minutes of talking in each one costs between $264 and $420 a year
 in subscriptions. Your laptop does the same job in about the time it takes you to write the next
-script. That's the whole reason this page exists.</p>
+script.</p>
 
 <h2 id="words">Words you'll meet</h2>
-<p>Four words show up in every guide, and none of them are hard.</p>
+<p>Five words show up in every guide, and none of them are hard.</p>
 <table>
   <tr><th>Word</th><th>What it means here</th></tr>
   <tr><td>Sample</td><td>A short recording of you talking. Ten seconds is enough.</td></tr>
   <tr><td>Clone</td><td>The program copies how your voice sounds. It doesn't record you again, and it doesn't need more takes.</td></tr>
   <tr><td>Model</td><td>The part of the program that turns text into speech. You download it once and keep it.</td></tr>
+  <tr><td>Environment</td><td>A folder where one program keeps its own parts. Two programs, two folders, mostly to keep them from breaking each other.</td></tr>
   <tr><td>Local</td><td>It runs on your own laptop. Nothing is uploaded anywhere and nobody else hears your voice.</td></tr>
 </table>
 
-<h2 id="ways">Two ways to do this</h2>
-<p>Pick one now, you can switch later.</p>
-<ul>
-  <li><strong>The easy way.</strong> One program, one folder, nothing to keep apart. This is where to
-      start, and for a lot of channels it's all you'll ever need.</li>
-  <li><strong>The careful way.</strong> Two programs in two separate folders. Takes an extra evening,
-      and gives you a second voice to compare against the first.</li>
-</ul>
+<h2 id="which">Which program</h2>
+<p>Two programs do this job, both free, both open source. Either one gives you the voice; the
+difference is speed and how many languages they know.</p>
+<table>
+  <tr><th></th><th>OmniVoice</th><th>Qwen3-TTS</th></tr>
+  <tr><td>Who makes it</td><td>k2-fsa, an open research team</td><td>the Qwen team at Alibaba</td></tr>
+  <tr><td>Where to get it</td><td><a href="https://github.com/k2-fsa/OmniVoice">github.com/k2-fsa/OmniVoice</a></td><td><a href="https://github.com/QwenLM/Qwen3-TTS">github.com/QwenLM/Qwen3-TTS</a></td></tr>
+  <tr><td>Tested here, 22 seconds of speech</td><td>26 seconds</td><td>73 seconds</td></tr>
+  <tr><td>Twenty minutes of narration</td><td>about 23 minutes</td><td>about an hour</td></tr>
+  <tr><td>Languages</td><td>more than 600</td><td>10, including Spanish</td></tr>
+  <tr><td>First download</td><td>about four minutes of files</td><td>about four gigabytes</td></tr>
+  <tr><td>Licence</td><td>Apache 2.0</td><td>Apache 2.0</td></tr>
+</table>
+<p>Both licences let you sell the videos you make with them. Start with OmniVoice — it ran about
+three times faster here. Keep Qwen3-TTS if you want a second voice to compare a line against.</p>
+
+<h2 id="install">How to install</h2>
+<p>You won't be writing code. You copy two commands, press enter, and wait for the download.</p>
+<ol>
+  <li><strong>Install Python once.</strong> Both programs are written in it. Get it from
+      <a href="https://www.python.org/downloads/">python.org</a>, version 3.12 or newer.</li>
+  <li><strong>Make one folder for each program.</strong> This is the step people skip, and it's the
+      one that costs them an evening. OmniVoice wants a newer version of a shared piece than
+      Qwen3-TTS does. In one folder they fight; in two they don't touch.</li>
+  <li><strong>In the OmniVoice folder, run these two lines.</strong> The first one installs the part
+      that does the maths, the second installs the program itself.
+      <pre><code>pip install torch==2.8.0 torchaudio==2.8.0
+pip install omnivoice</code></pre>
+      On a Windows or Linux machine with an NVIDIA card the first line is different — the exact
+      version is on the <a href="https://github.com/k2-fsa/OmniVoice">OmniVoice page</a>, under
+      Installation.</li>
+  <li><strong>Qwen3-TTS, in its own folder:</strong>
+      <pre><code>pip install -U qwen-tts</code></pre>
+      Its model files download by themselves the first time you run it.</li>
+  <li><strong>Point the program at your sample and your script, then press start.</strong> Both
+      projects show the exact line on their own page, and both have a window you can open locally
+      instead of typing anything.</li>
+</ol>
+<p>The whole setup is two evenings if you go slowly, and one if you don't. The
+<a href="files/setup.html">setup page</a> has the four things that go wrong and what to do about
+them.</p>
 
 <h2 id="do">What you do</h2>
 <ol>
@@ -67,15 +102,16 @@ needs an expensive computer.</p>
 
 <h2 id="trip">What trips people up</h2>
 <ul>
-  <li><strong>The two programs fight each other.</strong> They need different versions of the same
-      helper, so put them in two separate folders. Keep them together and both stop working, and
-      you'll spend the evening sure you did something wrong. You didn't. Move them apart.</li>
+  <li><strong>The two programs fight each other.</strong> OmniVoice needs a newer version of the same
+      shared piece than Qwen3-TTS does. Put them in two separate folders. Keep them together and both
+      stop working, and you'll spend the evening sure you did something wrong. You didn't. Move them
+      apart.</li>
   <li><strong>The accent comes from your recording, not from the language.</strong> Record in Russian
       and your Spanish will sound Russian. Want your Spanish to sound Mexican? Record a Spanish
       sample, eight or nine seconds is plenty.</li>
-  <li><strong>You can't describe a voice in words.</strong> The program copies a voice from a
-      recording, it doesn't invent one from a description. This is why the ten-second sample matters
-      more than any setting.</li>
+  <li><strong>You can't describe a voice in words.</strong> Both programs take a voice from these
+      attributes only: gender, age, pitch, accent, whisper. A recording beats a description, which is
+      why the ten-second sample matters more than any setting.</li>
   <li><strong>Slow and calm stays slow and calm.</strong> However you read the sample is how every
       future video will sound. Read it the way you want to be listened to.</li>
 </ul>
@@ -86,10 +122,16 @@ needs an expensive computer.</p>
   <tr><td>ElevenLabs, Creator plan</td><td>$22 a month</td></tr>
   <tr><td>Descript</td><td>$24–35 a month</td></tr>
   <tr><td>Speechify</td><td>$29 a month</td></tr>
-  <tr><td>A human voice actor, five finished minutes</td><td>from $350</td></tr>
+  <tr><td>A human narrator, up to five finished minutes</td><td>$350–400</td></tr>
+  <tr><td>OmniVoice or Qwen3-TTS on your own laptop</td><td>$0</td></tr>
 </table>
-<p class="note">Prices checked on October 2, 2026, straight off their pricing pages. They move, so
-look again before you pay anyone.</p>
+<p><strong>Where these numbers come from.</strong> ElevenLabs Creator and Descript were read off their
+own pricing pages on October 5, 2026 — <a href="https://elevenlabs.io/pricing">elevenlabs.io/pricing</a>
+and <a href="https://www.descript.com/pricing">descript.com/pricing</a>. Speechify the same, at
+<a href="https://speechify.com/pricing">speechify.com/pricing</a>. The narrator rate is a studio price
+list, <a href="https://www.voicecrafters.com/industry-standard-voice-over-rates">voicecrafters.com</a>.
+The yearly figure above is simple multiplication: $22 a month is $264 a year, $35 is $420. Prices move
+and there are first-month discounts — look before you pay anyone.</p>
 
 <h2 id="cant">What it can't do</h2>
 <ul>
@@ -101,7 +143,7 @@ look again before you pay anyone.</p>
 
 <h2 id="files">Files and numbers</h2>
 <ul>
-  <li><a href="files/measurements.html">How long you'll wait</a> — the numbers, timed on an ordinary laptop.</li>
+  <li><a href="files/measurements.html">How long you'll wait</a> — both programs timed on an ordinary laptop.</li>
   <li><a href="files/setup.html">Setting it up</a> — the four things to get right, and what to do when it won't start.</li>
   <li><a href="files/voice-clone.html">Recording your sample</a> — ten seconds that decide the whole channel.</li>
 </ul>
