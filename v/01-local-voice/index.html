@@ -17,9 +17,9 @@
 <p class="lead">I wanted to know whether my laptop could narrate my videos instead of a monthly voice
 subscription. It can. This page is the whole experiment.</p>
 
-<p class="note"><strong>Tested on:</strong> a Mac with an M2 chip and 8 GB of memory. Both programs run
-on Windows and Linux too; I didn't test those, and the setup page marks which lines come from the
-projects' own instructions rather than from me.</p>
+<p class="note"><strong>Tested on:</strong> a Mac with an M2 chip and 8 GB of memory.</p>
+<p class="note">Both programs run on Windows and Linux too. I didn't test those, and the setup page
+marks which lines come from the projects' own instructions rather than from me.</p>
 
 <nav class="toc">
   <a href="#used">What I used</a>
@@ -39,9 +39,9 @@ projects' own instructions rather than from me.</p>
   <li>Python 3.12, with each program in its own folder.</li>
   <li>Ten seconds of my own voice, recorded once.</li>
 </ul>
-<p>Both run on the laptop. Nothing is sent anywhere, neither needs a graphics card, and both licences
-allow commercial use — though if you plan to sell something built on top of the model, read the
-licence once yourself.</p>
+<p>Both run on the laptop. Nothing is sent anywhere, and neither needs a graphics card.</p>
+<p>Both licences allow commercial use. If you plan to sell something built on top of the model, read
+the licence once yourself.</p>
 
 <h2 id="went">How it went</h2>
 <p>The same twenty-two seconds of speech, given to both programs on the same machine:</p>
@@ -57,8 +57,9 @@ second voice, to compare a line that sounds off.</p>
 <p><a href="files/measurements.html">How long you'll wait</a> — both programs timed on the same machine.</p>
 
 <h2 id="try">Try it yourself</h2>
-<p>Python 3.12 or newer, then these two lines. The one step people skip: each program goes in its own
-folder. In one folder they break each other.</p>
+<p>Python 3.12 or newer, then these two lines.</p>
+<p>The one step people skip: each program goes in its own folder. In one folder they break each
+other.</p>
 <pre><code>pip install torch==2.8.0 torchaudio==2.8.0
 pip install omnivoice</code></pre>
 <p>The first run downloads the model — a few gigabytes, once. Then hand the program your text and your
@@ -93,17 +94,19 @@ browser.</p>
   <tr><td>A human narrator, up to five finished minutes</td><td>$350–400</td></tr>
   <tr><td>OmniVoice or Qwen3-TTS on your laptop</td><td>$0</td></tr>
 </table>
-<p><strong>Where the numbers come from.</strong> ElevenLabs, Descript and Speechify come from their own
-pricing pages, read on October 5, 2026. The narrator rate is a studio price list at voicecrafters.com.
-The language count is OmniVoice's own figure. Prices move, and first months are often discounted —
+<p><strong>Where the numbers come from.</strong> ElevenLabs, Descript and Speechify come from their
+own pricing pages, read on October 5, 2026. The narrator rate is a studio price list at
+voicecrafters.com.</p>
+<p>The language count is OmniVoice's own figure. Prices move, and first months are often discounted —
 check before you pay anyone.</p>
 <p>$0 means no subscription. Your time and the electricity aren't in the table.</p>
 
 <h2 id="catch">The catch</h2>
 <p>It sounds good. Not "good for a robot", just good — and it still isn't a person. For narration on a
 channel like this one, that's enough for me. For a brand's ad, I would hire a narrator.</p>
-<p>Your own clone is fine by YouTube's rules. Someone else's voice needs their permission first and a
-disclosure on the video — <a href="files/voice-clone.html">the sample page</a> has the short version,
+<p>Your own clone is fine by YouTube's rules. Someone else's voice needs their permission first, and a
+disclosure on the video.</p>
+<p><a href="files/voice-clone.html">The sample page</a> has the short version,
 <a href="https://support.google.com/youtube/answer/14328491">YouTube's own page</a> has the rules, and
 they do change.</p>
 <p><strong>Verdict:</strong> if the laptop is already on your desk, there's little reason to pay for
