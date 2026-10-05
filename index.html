@@ -4,30 +4,48 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Notes for the videos</title>
-<style>
-  :root { color-scheme: light dark; }
-  body { margin: 0 auto; max-width: 44rem; padding: 2rem 1.2rem 4rem;
-         font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  h1 { font-size: 1.6rem; margin-bottom: .3rem; }
-  p.lead { color: #666; margin-top: 0; }
-  ul { padding-left: 1.2rem; }
-  li { margin: .5rem 0; }
-  a { color: #0a58ca; }
-  @media (prefers-color-scheme: dark) {
-    body { background: #16181c; color: #e8e8e8; }
-    p.lead { color: #9aa0a6; }
-    a { color: #7ab8ff; }
-  }
-</style>
+<meta name="description" content="Steps, files and real numbers from every video, so you can repeat it yourself.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Notes for the videos</h1>
-<p class="lead">Everything I use in a video lands here: the steps, the files, and the real numbers.
-No fluff, no affiliate links, nothing paid.</p>
-<ul>
-  <li><a href="v/01-local-voice/">01 — Voiceover for free instead of $22 a month</a><br>
-      Two open models running on an 8 GB laptop, with the one part nobody warns you about.</li>
+<header class="site">
+  <a class="home" href="./">Notes for the videos</a>
+  <span class="lead">Free tools, my own numbers, nothing sponsored.</span>
+</header>
+
+<p class="lead">Every video gets a page like this one: the steps, the files to download, and the
+numbers I actually measured. Take what you need and build your own version.</p>
+
+<input class="search" type="search" id="q" placeholder="Search the videos…" aria-label="Search the videos">
+
+<ul class="cards" id="list">
+  <li>
+    <a href="v/01-local-voice/">01 — Voiceover for free instead of $22 a month</a>
+    <p>Two open models on an 8 GB laptop, with the one part nobody warns you about.</p>
+  </li>
 </ul>
-<p class="lead">Grab whatever you need and make your own version.</p>
+<p class="empty" id="empty">Nothing matches that yet.</p>
+
+<footer class="site">
+  <p>No affiliate links, no paid placements. If I link a tool, I paid for it myself.</p>
+</footer>
+
+<script>
+(function () {
+  var q = document.getElementById('q');
+  var items = Array.prototype.slice.call(document.querySelectorAll('#list li'));
+  var empty = document.getElementById('empty');
+  q.addEventListener('input', function () {
+    var t = q.value.trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function (li) {
+      var hit = !t || li.textContent.toLowerCase().indexOf(t) !== -1;
+      li.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    empty.style.display = shown ? 'none' : 'block';
+  });
+})();
+</script>
 </body>
 </html>

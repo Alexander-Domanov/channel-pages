@@ -1,19 +1,36 @@
-/* Общий стиль страниц канала */
+/* Shared styles for the video pages */
 :root { color-scheme: light dark; }
-body { margin: 0 auto; max-width: 44rem; padding: 2rem 1.2rem 4rem;
-       font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-h1 { font-size: 1.5rem; margin-bottom: .2rem; }
-h2 { font-size: 1.15rem; margin-top: 2rem; }
+* { box-sizing: border-box; }
+body { margin: 0 auto; max-width: 46rem; padding: 2rem 1.2rem 5rem;
+       font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+h1 { font-size: 1.65rem; margin: 0 0 .3rem; letter-spacing: -.01em; }
+h2 { font-size: 1.15rem; margin-top: 2.2rem; }
 p.lead { color: #666; margin-top: .2rem; }
 table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid #8883; }
-code { background: #8881; padding: .1rem .3rem; border-radius: .2rem; }
-.note { border-left: 3px solid #8884; padding-left: .9rem; color: #666; }
+th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid #8883; }
+th { font-weight: 600; }
+code { background: #8881; padding: .1rem .35rem; border-radius: .25rem; font-size: .92em; }
+.note { border-left: 3px solid #8884; padding-left: .9rem; color: #666; margin: 1.2rem 0; }
 a { color: #0a58ca; }
-ul { padding-left: 1.2rem; }
+ul, ol { padding-left: 1.25rem; }
 li { margin: .5rem 0; }
+header.site { display: flex; align-items: baseline; justify-content: space-between;
+              gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid #8883;
+              padding-bottom: .8rem; margin-bottom: 1.6rem; }
+header.site a.home { text-decoration: none; font-weight: 600; }
+nav.toc { margin: 1.2rem 0 0; font-size: .95rem; color: #666; }
+nav.toc a { margin-right: .9rem; white-space: nowrap; }
+ul.cards { list-style: none; padding: 0; }
+ul.cards li { border: 1px solid #8883; border-radius: .6rem; padding: 1rem 1.1rem; margin: 0 0 .9rem; }
+ul.cards a { font-weight: 600; text-decoration: none; }
+ul.cards p { margin: .35rem 0 0; color: #666; }
+input.search { width: 100%; padding: .6rem .8rem; font: inherit; border: 1px solid #8885;
+               border-radius: .5rem; background: transparent; color: inherit; margin: .2rem 0 1.2rem; }
+.empty { color: #666; display: none; }
+footer.site { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid #8883;
+              font-size: .9rem; color: #666; }
 @media (prefers-color-scheme: dark) {
   body { background: #16181c; color: #e8e8e8; }
-  p.lead, .note { color: #9aa0a6; }
+  p.lead, .note, nav.toc, ul.cards p, .empty, footer.site { color: #9aa0a6; }
   a { color: #7ab8ff; }
 }
